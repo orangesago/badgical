@@ -64,8 +64,15 @@ export const compactColor = (color: string): string =>
     color.replace(/^#([\dA-Fa-f])\1([\dA-Fa-f])\2([\dA-Fa-f])\3$/, '#$1$2$3');
 
 export const logoTextGap = textStart - logoX - logoSize;
-export const estimatedCharacterWidth = 5.9;
-export const estimatedChWidth = 6.4;
+const estimatedWidthReferenceSize = 10;
+const estimatedWidthScale = textSize / estimatedWidthReferenceSize;
+const estimatedCharacterWidthAtReferenceSize = 5.9;
+const estimatedChWidthAtReferenceSize = 6.4;
+
+export const estimatedCharacterWidth =
+    estimatedCharacterWidthAtReferenceSize * estimatedWidthScale;
+export const estimatedChWidth =
+    estimatedChWidthAtReferenceSize * estimatedWidthScale;
 export const badgeInlinePadding = estimatedChWidth * 2;
 
 const estimatedGlyphWidths = {
@@ -85,16 +92,16 @@ const estimatedGlyphWidths = {
     '-': 3.8,
     '.': 3,
     '/': 3.6,
-    '0': estimatedChWidth,
-    '1': estimatedChWidth,
-    '2': estimatedChWidth,
-    '3': estimatedChWidth,
-    '4': estimatedChWidth,
-    '5': estimatedChWidth,
-    '6': estimatedChWidth,
-    '7': estimatedChWidth,
-    '8': estimatedChWidth,
-    '9': estimatedChWidth,
+    '0': estimatedChWidthAtReferenceSize,
+    '1': estimatedChWidthAtReferenceSize,
+    '2': estimatedChWidthAtReferenceSize,
+    '3': estimatedChWidthAtReferenceSize,
+    '4': estimatedChWidthAtReferenceSize,
+    '5': estimatedChWidthAtReferenceSize,
+    '6': estimatedChWidthAtReferenceSize,
+    '7': estimatedChWidthAtReferenceSize,
+    '8': estimatedChWidthAtReferenceSize,
+    '9': estimatedChWidthAtReferenceSize,
     ':': 3.2,
     ';': 3.2,
     '<': 6.8,
@@ -168,9 +175,11 @@ const estimatedGlyphWidths = {
 
 export const getEstimatedGlyphWidth = (character: string): number => {
     if (character in estimatedGlyphWidths) {
-        return estimatedGlyphWidths[
-            character as keyof typeof estimatedGlyphWidths
-        ];
+        return (
+            estimatedGlyphWidths[
+                character as keyof typeof estimatedGlyphWidths
+            ] * estimatedWidthScale
+        );
     }
 
     return /[\u2E80-\u9FFF]/u.test(character)
@@ -487,7 +496,7 @@ export const buildBadgeSvg = (
                   )
                 : '';
             const textMarkup = hasText
-                ? `<text fill="${escapeXml(compactColor(state.textColor))}" x="${compactNumber(textX)}" y="18" text-anchor="start"${textAttributes}>${escapeXml(displayName)}</text>`
+                ? `<text fill="${escapeXml(compactColor(state.textColor))}" x="${compactNumber(textX)}" y="${badgeHeight / 2}" dominant-baseline="central" text-anchor="start"${textAttributes}>${escapeXml(displayName)}</text>`
                 : '';
             const centeredContent =
                 contentWidth === 0

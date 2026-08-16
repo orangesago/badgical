@@ -50,6 +50,6 @@ export const maxSvglResults = 8;
 export const logoEdgeCanvasSize = 64;
 export const logoEdgeAlphaThreshold = 24;
 export const logoEdgeColorDistance = 72;
-export const githubUrl = 'https://github.com/Hsiii/Badgical';
+export const githubUrl = 'https://github.com/orangesago/badgical';
 export const svglUrl = 'https://svgl.app';
 export const exportFileName = 'animated-badge.svg';

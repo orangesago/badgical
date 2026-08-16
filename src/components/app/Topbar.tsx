@@ -31,7 +31,8 @@ interface TopbarProps {
     readonly themePreference: ThemePreference;
 }
 
-const githubRepositoryApiUrl = 'https://api.github.com/repos/Hsiii/Badgical';
+const githubRepositoryApiUrl =
+    'https://api.github.com/repos/orangesago/badgical';
 
 interface GitHubRepositoryPayload {
     readonly stargazers_count: number;

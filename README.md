@@ -10,5 +10,5 @@ Rotate badges between products, tools, sponsors, or stack items to showcase more
 
 ## Examples
 
-![輪播 TypeScript、JavaScript和React 的動畫徽章](https://raw.githubusercontent.com/orangesago/badgical/HEAD/assets/animated-badge.svg)
-![輪播 Figma和Adobe 的動畫徽章](https://raw.githubusercontent.com/orangesago/badgical/HEAD/assets/animated-badge2.svg)
+![輪播 TypeScript、JavaScript和React 的動畫徽章](https://raw.githubusercontent.com/sago-cream/badgical/HEAD/assets/animated-badge.svg)
+![輪播 Figma和Adobe 的動畫徽章](https://raw.githubusercontent.com/sago-cream/badgical/HEAD/assets/animated-badge2.svg)

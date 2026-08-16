@@ -32,7 +32,7 @@ interface TopbarProps {
 }
 
 const githubRepositoryApiUrl =
-    'https://api.github.com/repos/orangesago/badgical';
+    'https://api.github.com/repos/sago-cream/badgical';
 
 interface GitHubRepositoryPayload {
     readonly stargazers_count: number;
